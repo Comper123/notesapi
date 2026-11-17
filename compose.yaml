@@ -1,0 +1,23 @@
+services:
+  notes-api:
+    build: .
+    image: notes-api:1.0.0
+    restart: unless-stopped
+    environment:
+      PORT: ${PORT:-8201}
+      DATA_FILE: /data/notes.json
+    ports:
+      - "${PORT:-8201}:${PORT:-8201}"
+    volumes:
+      - notes-data:/data
+    mem_limit: 128m
+    cpus: 0.50
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  notes-data:
+    name: notes-api-data
