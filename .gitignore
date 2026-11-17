@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 backup/
 report/evidence/
+tmp/
+/5.pdf
